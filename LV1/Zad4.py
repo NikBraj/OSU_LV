@@ -1,6 +1,6 @@
 wordValue = {}
 
-songFile = open('song.txt')
+songFile = open('LV1\song.txt')
 
 for line in songFile:
     line = line.rstrip()
@@ -16,7 +16,7 @@ uniqueWords = 0
 
 for word in wordValue:
     if wordValue[word] == 1:
-        uniqueWords = uniqueWords+1
+        uniqueWords = uniqueWords + 1
         print(f'{word} : {wordValue[word]}')
 
 print(uniqueWords)
