@@ -1,6 +1,6 @@
 wordValue = {}
 
-songFile = open('LV1\song.txt')
+songFile = open('song.txt')
 
 for line in songFile:
     line = line.rstrip()
