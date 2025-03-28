@@ -49,6 +49,7 @@ linearModel = lm.LinearRegression()
 linearModel.fit(X_train_n, y_train)
 
 print(linearModel.coef_)
+print(linearModel.intercept_)
 
 print('----------------------------------------------------------------')
 
