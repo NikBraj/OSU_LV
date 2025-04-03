@@ -49,6 +49,7 @@ linearModel = lm.LinearRegression()
 linearModel.fit(X_train_n, y_train)
 
 print(linearModel.coef_)
+print(linearModel.intercept_)
 
 print('----------------------------------------------------------------')
 
@@ -66,7 +67,15 @@ print('----------------------------------------------------------------')
 MAE = mean_absolute_error(y_test , y_test_p)
 MSE = mean_squared_error(y_test , y_test_p)
 MAPE = mean_absolute_percentage_error(y_test, y_test_p)
-RMSE = mean_squared_error(y_test, y_test_p, squared=True)
+RMSE = np.sqrt(MSE)
 R_TWO_SCORE = r2_score(y_test, y_test_p)
 
 print(f"MAE: {MAE}, MSE: {MSE}, MAPE: {MAPE}, RMSE: {RMSE}, R2 SCORE: {R_TWO_SCORE}")
+
+
+...
+Ovisno o broju ulaznih veličina mijenja se vrijednost evaluacijskih podataka na način da previše podataka može učiniti model
+previše složenim (overfitting) i na taj način postati manje efikasan nego jednostavniji model. S druge strane manjank ulaznih parametara 
+može dovesti do previše jednostavnog modela (underfitting) i loših rezultata u koraku evaluacije modela, što znači da će iznosi pogrešaka 
+biti veći, a sama moć predikcije će opasti. Osim toga nije svejedno koje parametre izostavimo jer savki ima drugu razinu utjecaja na model.
+...
