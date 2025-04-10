@@ -86,10 +86,12 @@ print(teta0)
 print('Parametri modela') 
 print(coefs) 
 
+print('c-------------------------------------------------------------------')
+
 # d)
 plot_decision_regions(X_train, y_train, logisticRegression)
 
-print('a-------------------------------------------------------------------')
+print('d-------------------------------------------------------------------')
 
 # e)
 y_prediction = logisticRegression.predict(X_test)

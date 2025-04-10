@@ -16,14 +16,9 @@ X, y = make_classification(n_samples=200, n_features=2, n_redundant=0, n_informa
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=5)
 
 # Pod a
-plt.scatter(X_train[:,0], X_train[:,1], c="red")
-plt.scatter(X_test[:,0], X_test[:,1], c="blue", marker='*')
-'''
-plt.scatter(X_train[:,0], y_train, c="red")
-plt.scatter(X_train[:,1], y_train, c="red")
-plt.scatter(X_test[:,0], y_test, c="blue", marker='*')
-plt.scatter(X_test[:,1], y_test, c="blue", marker='*')
-'''
+plt.scatter(X_train[:,0], X_train[:,1], c=y_train, cmap="coolwarm", edgecolors='k')
+plt.scatter(X_test[:,0], X_test[:,1], c=y_test, cmap="coolwarm", marker='+')
+
 plt.show()
 
 print('a-------------------------------------------------------------------')
@@ -39,13 +34,18 @@ print('b-------------------------------------------------------------------')
 b = LogRegression_model.intercept_[0]
 w1,w2 = LogRegression_model.coef_.T
 
-c = -b/w2 #presetanje
-m = -w1/w2 #nagib
+c = -b/w2 #presretanje(teta 0)
+m = -w1/w2 #nagib(teta 1 i teta 2)
 
 xmin, xmax = -4, 4
 ymin, ymax = -4, 4
 xd = np.array([xmin, xmax])
 yd = m*xd+c
+
+print(xd)
+print(yd)
+
+plt.scatter(X_train[:,0], X_train[:,1], c=y_train, cmap="coolwarm", edgecolors='k')
 
 plt.plot(xd,yd, 'k', lw=1, ls='--')
 plt.fill_between(xd, yd, ymin,color='orange', alpha=0.2)
@@ -63,8 +63,8 @@ print(classification_report(y_test , y_test_p))
 print('d-------------------------------------------------------------------')
 
 #Pod e
-y1 = (y_test==y_test_p)
-y0 = (y_test!=y_test_p)
+#y1 = (y_test==y_test_p)
+#y0 = (y_test!=y_test_p)
 
 X_false = []
 
@@ -75,6 +75,6 @@ for i in range(len(y_test)):
 X_false = np.array(X_false)
 print(X_false)
 
-plt.scatter(X_test[:,0], X_test[:, 1])
-plt.scatter(X_false[:,0], X_false[:,1], color='green')
+plt.scatter(X_test[:,0], X_test[:, 1], color='green')
+plt.scatter(X_false[:,0], X_false[:,1], color='black')
 plt.show()
