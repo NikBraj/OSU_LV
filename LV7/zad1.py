@@ -50,6 +50,8 @@ def do_task(n_samples, flag_c):
     km.fit(X)
     labels = km.predict(X)
 
+    
+
     # prikazi primjere u obliku dijagrama rasprsenja
     plt.figure()
     plt.scatter(X[:, 0], X[:, 1], c=labels)
@@ -59,8 +61,33 @@ def do_task(n_samples, flag_c):
     plt.show()
 
 
-do_task(500, 1)
-do_task(500, 2)
-do_task(500, 3)
-do_task(500, 4)
-do_task(500, 5)
+# Funkcija za izvođenje lakat metode i crtanje grafa
+def elbow_method(X, max_k=10):
+    inertias = []  
+
+    # Iteriraj kroz broj klastera od 1 do max_k
+    for k in range(1, max_k + 1):
+        km = KMeans(n_clusters=k, init="k-means++", n_init=5, random_state=0)
+        km.fit(X)  
+        inertias.append(km.inertia_) 
+
+   
+    plt.figure()
+    plt.plot(range(1, max_k + 1), inertias, marker='o')
+    plt.xlabel("Broj klastera (K)")
+    plt.ylabel("Inercija")
+    plt.title("Lakat metoda")
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+
+# Testiranje svih funkcija na različitim skupovima podataka
+do_task(500, 1)  
+do_task(500, 2) 
+do_task(500, 3)  
+do_task(500, 4)  
+do_task(500, 5)  
+
+# Izvođenje lakat metode za optimalni broj klastera
+X = generate_data(500, 1)  
+elbow_method(X, max_k=10)  
