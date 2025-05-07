@@ -113,5 +113,6 @@ LESS LAYERS:
 LESS DATA:
     Prestao nakon 20 epoha, najtocniji na 15toj
     Tocnost na testnom skupu 71.21
+    https://chatgpt.com/share/6818f4cb-a6a4-8010-aad9-25074f02c07d
     Vrijeme po epohi 6-7 s
 '''
